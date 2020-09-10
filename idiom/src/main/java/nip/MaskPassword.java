@@ -7,6 +7,6 @@ public class MaskPassword {
 	  }
 
 	  // Replace all password values with empty strings
-	  return jsonString.replaceAll("(\\n?\\s*\"password\"\\s*:\\s*\")[^\\n\"]*(\",?\\n?)", "$1$2");
+	  return jsonString.replaceAll("(\\n?\\s*\"dbPassword\"\\s*:\\s*\")[^\\n\"]*(\",?\\n?)", "$1$2");
 	}
 }

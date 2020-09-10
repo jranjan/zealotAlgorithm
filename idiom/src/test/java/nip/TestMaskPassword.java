@@ -11,7 +11,7 @@ import com.google.gson.JsonObject;
 public class TestMaskPassword {
 
 	MaskPassword sc;
-    JsonObject passwordJson, passwrdPlusJson, nonPasswordJson;
+    JsonObject passwordJson, passwrdPlusJson, nonPasswordJson, nestedJson;
 	
 	@BeforeTest
 	public void initStringsAndObjects(){
@@ -19,15 +19,18 @@ public class TestMaskPassword {
 		
 		passwordJson = new JsonObject();
 		passwordJson.addProperty("user","nody");
-		passwordJson.addProperty("password","nody@123");
+		passwordJson.addProperty("dbPassword","nody@123");
 		
 		passwrdPlusJson = new JsonObject();
 		passwrdPlusJson.addProperty("user","nody");
-		passwrdPlusJson.addProperty("passwordPlus","nody@123");
+		passwrdPlusJson.addProperty("password","nody@123");
 		
 		nonPasswordJson = new JsonObject();
 		nonPasswordJson.addProperty("user","nody");
 		nonPasswordJson.addProperty("token","nody@123");
+		
+		nestedJson = new JsonObject();
+		nestedJson.add("cred", passwordJson);
 	}
 	
 	@Test (priority = 1)
@@ -36,7 +39,7 @@ public class TestMaskPassword {
 		JsonObject convertedObject = new Gson().fromJson(newString, JsonObject.class);
 		Assert.assertTrue(convertedObject.isJsonObject());
 		Assert.assertTrue(convertedObject.get("user").getAsString().equals("nody"));
-		Assert.assertTrue(convertedObject.get("password").getAsString().isEmpty() == true);
+		Assert.assertTrue(convertedObject.get("dbPassword").getAsString().isEmpty() == true);
 	}
 	
 	@Test(priority = 2)
@@ -45,7 +48,7 @@ public class TestMaskPassword {
 		JsonObject convertedObject = new Gson().fromJson(newString, JsonObject.class);
 		Assert.assertTrue(convertedObject.isJsonObject());
 		Assert.assertTrue(convertedObject.get("user").getAsString().equals("nody"));
-		Assert.assertTrue(convertedObject.get("passwordPlus").getAsString().isEmpty() == false);
+		Assert.assertTrue(convertedObject.get("password").getAsString().isEmpty() == false);
 	}
 
 	@Test(priority = 3)
@@ -61,6 +64,16 @@ public class TestMaskPassword {
 	public void testNullJson(){
 		String newString = sc.removePasswordFromJsonString(null);
 		Assert.assertTrue(newString == null);
+	}
+	
+	@Test (priority = 5)
+	public void testNestedPasswordJson(){
+		String newString = sc.removePasswordFromJsonString(nestedJson.toString());
+		JsonObject convertedObject = new Gson().fromJson(newString, JsonObject.class);
+		JsonObject cred = convertedObject.get("cred").getAsJsonObject();
+		Assert.assertTrue(convertedObject.isJsonObject());
+		Assert.assertTrue(cred.get("user").getAsString().equals("nody"));
+		Assert.assertTrue(cred.get("dbPassword").getAsString().isEmpty() == true);
 	}
 	
 	@AfterTest
