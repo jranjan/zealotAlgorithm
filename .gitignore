@@ -9,4 +9,8 @@ build
 
 
 *.idea
+*.iml*
+
+lib
+buildSrc
 

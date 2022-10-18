@@ -5,7 +5,3 @@
 plugins {
     id 'labs.java.java-library-conventions'
 }
-
-dependencies {
-    api project(':list')
-}

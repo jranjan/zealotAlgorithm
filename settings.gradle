@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'labs-java'
-include('app', 'list', 'utilities')
+include('app', 'language', 'tools')
