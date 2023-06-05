@@ -1,19 +1,42 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '2.7.3'
 }
-
-group 'com.salesforce.usd'
-version '0.0.1'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
+    compileOnly 'org.projectlombok:lombok'
+    implementation 'org.modelmapper:modelmapper:3.0.0'
+    runtimeOnly 'org.postgresql:postgresql'
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa:2.7.3') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    implementation group: 'com.vladmihalcea', name: 'hibernate-types-55', version: '2.12.1'
+    implementation('io.github.lognet:grpc-spring-boot-starter:4.7.0') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    implementation('org.springframework:spring-aspects:5.2.1.RELEASE')
 
+    runtimeOnly('com.h2database:h2')
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    testImplementation('org.junit.jupiter:junit-jupiter-engine:5.6.2')
+}
 test {
     useJUnitPlatform()
 }
+sourceSets {
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+        resources {
+            srcDirs = ['src/test/resources']
+        }
+    }
+}
+

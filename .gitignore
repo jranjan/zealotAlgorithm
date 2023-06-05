@@ -13,4 +13,5 @@ build
 
 lib
 buildSrc
+logs
 
