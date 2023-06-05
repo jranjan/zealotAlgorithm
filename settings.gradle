@@ -15,8 +15,3 @@ rootProject.name = 'labs-java'
 include 'core'
 include 'core:common'
 include 'core:language'
-include 'core:springbootapp'
-findProject(':core:springbootapp')?.name = 'springbootapp'
-include 'core:sping'
-findProject(':core:sping')?.name = 'sping'
-
