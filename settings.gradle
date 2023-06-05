@@ -15,4 +15,6 @@ rootProject.name = 'labs-java'
 include 'core:common'
 include 'core:language'
 include 'core:spring'
+include 'core:spring:bootapp'
+findProject(':core:spring:bootapp')?.name = 'bootapp'
 
