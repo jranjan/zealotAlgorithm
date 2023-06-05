@@ -13,4 +13,5 @@ pluginManagement {
 
 rootProject.name = 'labs-java'
 include 'application'
+include 'core'
 
