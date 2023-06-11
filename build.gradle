@@ -1,24 +1,13 @@
 plugins {
-    // id 'org.springframework.boot' version '2.7.3'
-    // id 'io.spring.dependency-management' version '1.0.14.RELEASE'
 }
 
 def suffix = (version.toString().endsWith("SNAPSHOT")) ? "snapshots" : "releases"
-def nexusUser = System.getProperty("nexusUser") ?: System.getenv('NEXUS_USERNAME')
-def nexusPassword = System.getProperty("nexusPassword") ?: System.getenv('NEXUS_PASSWORD')
-def nexusProxyUrl = System.getProperty("nexusProxyUrl") ?: 'https://sfcirelease.sfci.buildndeliver-s.aws-esvc1-useast2.aws.sfdc.is'
 
 repositories {
     mavenCentral()
     maven {
         metadataSources {
             artifact()
-        }
-        name "nexus"
-        url "${nexusProxyUrl}/nexus/content/groups/public/"
-        credentials(PasswordCredentials) {
-            username nexusUser
-            password nexusPassword
         }
     }
 }
@@ -31,68 +20,6 @@ subprojects {
 
     repositories {
         mavenCentral()
-        // reach out to public nexus endpoint for public artifacts
-        maven {
-            name "nexus"
-            url nexusProxyUrl
-            credentials(PasswordCredentials) {
-                username nexusUser
-                password nexusPassword
-            }
-        }
-        maven {
-            url "${nexusProxyUrl}/nexus/content/repositories/central/"
-            credentials {
-                username nexusUser
-                password nexusPassword
-            }
-        }
-        // repositories mentioned below are for com.salesforce.* artifacts
-        // for releases
-        maven {
-            url "${nexusProxyUrl}/nexus/content/repositories/Rengin/"
-            credentials {
-                username nexusUser
-                password nexusPassword
-            }
-        }
-        maven {
-            url "${nexusProxyUrl}/nexus/content/repositories/gradle-plugins/"
-            credentials {
-                username nexusUser
-                password nexusPassword
-            }
-        }
-        maven {
-            url "${nexusProxyUrl}/nexus/content/repositories/conflient.io/"
-            credentials {
-                username nexusUser
-                password nexusPassword
-            }
-        }
-        maven {
-            url "${nexusProxyUrl}/nexus/content/repositories/repo.spring.io/"
-            credentials {
-                username nexusUser
-                password nexusPassword
-            }
-        }
-        maven {
-            url "${nexusProxyUrl}/nexus/content/repositories/thirdparty/"
-            credentials {
-                username nexusUser
-                password nexusPassword
-            }
-        }
-
-        // for snapshots
-        maven {
-            url "${nexusProxyUrl}/nexus/content/groups/public/"
-            credentials {
-                username nexusUser
-                password nexusPassword
-            }
-        }
     }
 
     dependencies {
