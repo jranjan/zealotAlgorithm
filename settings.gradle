@@ -1,20 +1,5 @@
-pluginManagement {
-    repositories {
-        maven {
-            name "nexus"
-            credentials {
-                username "${System.getenv('NEXUS_USERNAME')}"
-                password "${System.getenv('NEXUS_PASSWORD')}"
-            }
-            url "https://sfcirelease.sfci.buildndeliver-s.aws-esvc1-useast2.aws.sfdc.is/nexus/content/groups/public/"
-        }
-    }
-}
 
 rootProject.name = 'labs-java'
 include 'core:common'
 include 'core:language'
-include 'core:spring'
-include 'core:spring:bootapp'
-findProject(':core:spring:bootapp')?.name = 'bootapp'
 

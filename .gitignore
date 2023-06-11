@@ -9,6 +9,7 @@ build
 
 
 *.idea*
+.idea/misc.xml
 *.iml*
 
 lib
