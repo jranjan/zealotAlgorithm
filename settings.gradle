@@ -1,5 +1,5 @@
 
 rootProject.name = 'labs-java'
-include 'core'
 include 'core:common'
 include 'core:language'
+
