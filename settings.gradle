@@ -1,5 +1,0 @@
-
-rootProject.name = 'labs-java'
-include 'core:common'
-include 'core:language'
-
