@@ -1,7 +1,4 @@
-package org.zealot.algorithm.academy;
-
-import java.util.HashSet;
-import java.util.Set;
+package org.zealot.algorithm.easyone;
 
 public class Sqrt {
     public static int solution(int number) {
