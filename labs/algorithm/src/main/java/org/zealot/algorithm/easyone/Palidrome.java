@@ -1,6 +1,4 @@
-package org.zealot.algorithm.academy;
-
-import static java.lang.Character.SPACE_SEPARATOR;
+package org.zealot.algorithm.easyone;
 
 public class Palidrome {
     public static boolean solution(String s) {

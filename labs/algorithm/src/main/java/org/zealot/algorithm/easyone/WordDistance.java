@@ -1,4 +1,4 @@
-package org.zealot.algorithm.academy;
+package org.zealot.algorithm.easyone;
 
 public class WordDistance {
     public static int solution(String[] words, String word1, String word2) {

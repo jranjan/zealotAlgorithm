@@ -1,4 +1,4 @@
-package org.zealot.algorithm.academy;
+package org.zealot.algorithm.easyone;
 
 import java.util.Arrays;
 import java.util.HashSet;
