@@ -1,4 +1,4 @@
-package com.backbase.api.models.v1.version;
+package com.backbase.api.controller.v1.request;
 
 import com.backbase.api.common.BackbaseData;
 import lombok.Getter;
@@ -8,6 +8,5 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Version implements BackbaseData {
-    private String version = "1.0";
+public class BackbaseApiInput implements BackbaseData {
 }
