@@ -10,4 +10,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class AccountCreationInput extends BackbaseApiInput {
+    private String accountHolderName;
+    private String accountHolderPrimaryEmail;
+    private String accountHolderMobile;
+    private String bankName;
+    private String branchCode;
 }

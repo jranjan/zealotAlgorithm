@@ -8,6 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Version implements BackbaseData {
+public class VersionInfo implements BackbaseData {
     private String version = "1.0";
 }
