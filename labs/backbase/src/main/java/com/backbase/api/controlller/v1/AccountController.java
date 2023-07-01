@@ -1,5 +1,7 @@
 package com.backbase.api.controlller.v1;
 
+import com.backbase.api.controlller.v1.response.account.Account;
+import com.backbase.api.controlller.v1.response.version.Version;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,32 +10,32 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("backbase/v1/accounts")
+@RequestMapping("/accounts")
 public class AccountController {
 
     @RequestMapping(value="/{account}", method=RequestMethod.GET)
-    public String getAccount(
+    public Account getAccount(
             @PathVariable("account") final String account) {
-        String res = String.format("account details for {%s}", account);
-        return res;
+        Account response = new Account();
+        return response;
     }
 
     @RequestMapping(value="/{account_type}", method=RequestMethod.POST)
-    public String createAccount(@PathVariable("account_type") final String account_type) {
-        String res = String.format("Account {%s} created", account_type);
-        return res;
+    public Account createAccount(@PathVariable("account_type") final String account_type) {
+        Account response = new Account();
+        return response;
     }
 
     @RequestMapping(value="/{account_number}", method=RequestMethod.PUT)
-    public String updateAccount(
+    public Account updateAccount(
             @PathVariable("account_number") final String account_number) {
-        String res = String.format("Account {%s} is updated", account_number);
-        return res;
+        Account response = new Account();
+        return response;
     }
     @RequestMapping(value="/{account_number}", method=RequestMethod.DELETE)
-    public String deleteAccount(
+    public Account deleteAccount(
             @PathVariable("account_number") final String account_number) {
-        String res = String.format("Account {%s} is deleted", account_number);
-        return res;
+        Account response = new Account();
+        return response;
     }
 }
