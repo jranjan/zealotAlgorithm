@@ -1,0 +1,490 @@
+openapi: 3.0.1
+info:
+  title: Backbase Public API
+  description: Backbase Public API Specification.
+  version: 2.0.0
+servers:
+  - url: http://localhost:8080/backbase/v1/
+externalDocs:
+  description: For any query, reach out to us at slack channel '#backbase-support
+  url: https://www.backbase.com/
+tags:
+  - name: Backbase Public API
+paths:
+  /version:
+    get:
+      summary: Get API Version
+      description: Returns the version of the API.
+      operationId: getVersionInfo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  version:
+                    type: string
+                    example: 1.0.0
+  /accounts/{account_number}:
+    get:
+      tags:
+        - Accounts
+      summary: Get details of given Account.
+      operationId: getAccountInfo
+      parameters:
+        - name: account_number
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 52421344
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountInfo'
+        '400':
+          description: Invalid Account Number
+          content:
+            application/json:
+              example:
+                code: BB0100700
+                type: External input
+                message: Invalid account number provided
+                help: Provide valid account number, or reach out to slack channel '#backbase-support'
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Authorisation error
+          content:
+            application/json:
+              example:
+                code: BB0002700
+                type: External input
+                message: Authorisation failed
+                help: Verify you are authorisied to perform the operation
+              schema:
+                $ref: '#/components/schemas/AuthorisationError'
+    put:
+      tags:
+        - Accounts
+      summary: Update an Account
+      description: Updates an existing user account.
+      operationId: updateAccount
+      parameters:
+        - name: account_number
+          in: path
+          description: ID of the account to update
+          required: true
+          schema:
+            type: integer
+            example: 52421344
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountUpdateRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountInfo'
+        '400':
+          description: Invalid Account Number
+          content:
+            application/json:
+              example:
+                code: BB0100700
+                type: External input
+                message: Invalid account number provided
+                help: Provide valid account number, or reach out to slack channel '#backbase-support'
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Authorisation error
+          content:
+            application/json:
+              example:
+                code: BB0002700
+                type: External input
+                message: Authorisation failed
+                help: Verify you are authorisied to perform the operation
+              schema:
+                $ref: '#/components/schemas/AuthorisationError'
+    delete:
+      tags:
+        - Accounts
+      summary: Delete an Account
+      description: Deletes an existing user account.
+      operationId: deleteAccount
+      parameters:
+        - name: account_number
+          in: path
+          description: ID of the account to update
+          required: true
+          schema:
+            type: integer
+            example: 52421344
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountInfo'
+        '400':
+          description: Invalid Account Number
+          content:
+            application/json:
+              example:
+                code: BB0100700
+                type: External input
+                message: Invalid account number provided
+                help: Provide valid account number, or reach out to slack channel '#backbase-support'
+              schema:
+                $ref: '#/components/schemas/AuthorisationError'
+        '401':
+          description: Authorisation error
+          content:
+            application/json:
+              example:
+                code: BB0002700
+                type: External input
+                message: Authorisation failed
+                help: Verify you are authorisied to perform the operation
+              schema:
+                $ref: '#/components/schemas/AuthorisationError'
+  /accounts:
+    post:
+      tags:
+        - Accounts
+      summary: Create an Account
+      description: Creates a new user account.
+      operationId: createAccount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountCreationRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountInfo'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              example:
+                code: BB0202701
+                type: External input
+                message: Account creation criteria not met
+                help: Reach out to slack channel '#backbase-support'
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Authorisation error
+          content:
+            application/json:
+              example:
+                code: BB0002700
+                type: External input
+                message: Authorisation failed
+                help: Verify you are authorisied to perform the operation
+              schema:
+                $ref: '#/components/schemas/AuthorisationError'
+        '409':
+          description: Account already exists
+          content:
+            application/json:
+              example:
+                code: BB0202700
+                type: External user input
+                message: Account already exists
+                help: Reach out to slack channel '#usd-support'
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+  /accounts/{account_number}/transactions:
+    get:
+      tags:
+        - AccountTransaction
+      summary: Get Transaction Details
+      description: Retrieves the transaction details of for a Account.
+      operationId: getTransaction
+      parameters:
+        - name: account_number
+          in: path
+          description: ID of the account to get transaction
+          required: true
+          schema:
+            type: integer
+            example: 52421344
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountTransactionInfo'
+        '400':
+          description: Invalid Account Number
+          content:
+            application/json:
+              example:
+                code: BB0100700
+                type: External input
+                message: Invalid account number provided
+                help: Provide valid account number, or reach out to slack channel '#backbase-support'
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Authorisation error
+          content:
+            application/json:
+              example:
+                code: BB0002700
+                type: External input
+                message: Authorisation failed
+                help: Verify you are authorisied to perform the operation
+              schema:
+                $ref: '#/components/schemas/AuthorisationError'
+        '404':
+          description: No trsanction found
+          content:
+            application/json:
+              example:
+                code: BB0300700
+                type:
+                message: Unable to find resource with given parameters
+                help: Reach out to slack channel '#usd-support'
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+    post:
+      tags:
+        - AccountTransaction
+      summary: Create Transaction
+      description: Creates a new transaction for a bank account.
+      operationId: createTransaction
+      parameters:
+        - name: account_number
+          in: path
+          description: ID of the account to create transaction
+          required: true
+          schema:
+            type: integer
+            example: 52421344
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountTransactionRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountTransactionInfo'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              example:
+                code: BB0202701
+                type: External input
+                message: Transaction criteria not met
+                help: Reach out to slack channel '#backbase-support'
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+        '401':
+          description: Authorisation error
+          content:
+            application/json:
+              example:
+                code: BB0002700
+                type: External input
+                message: Authorisation failed
+                help: Verify you are authorisied to perform the operation
+              schema:
+                $ref: '#/components/schemas/AuthorisationError'
+components:
+  schemas:
+    AccountInfo:
+      type: object
+      properties:
+        accountNumber:
+          type: integer
+          example: 52421344
+        accountType:
+          type: string
+          example: Saving
+        accountHolderName:
+          type: string
+          example: BackbaseFinance
+        accountHolderPrimaryEmail:
+          type: string
+          example: backbase@gmail.com
+        accountHolderMobile:
+          type: string
+          example: '+91-9986316924'
+        dailyTransactionLimit:
+          type: string
+          example: 10000
+        branchDetails:
+          type: object
+          items:
+            '$ref': '#/components/schemas/AccountBrnachAttributes'
+        additionalProperties:
+          type: string
+    AccountCreationRequest:
+      type: object
+      properties:
+        accountHolderName:
+          type: string
+          example: BackbaseFinance
+        accountHolderPrimaryEmail:
+          type: string
+          example: backbase@gmail.com
+        accountHolderMobile:
+          type: string
+          example: '+91-9986316924'
+        bankName:
+          type: string
+          example: 'HDFC'
+        branchCode:
+          type: string
+          example: 'HDFCIN000001'
+    AccountUpdateRequest:
+      type: object
+      properties:
+        dailyTransactionLimit:
+          type: integer
+          example: 10000
+        accountHolderPrimaryEmail:
+          type: string
+          example: backbase@gmail.com
+        accountHolderMobile:
+          type: string
+          example: '+91-9986316924'
+    AccountBrnachAttributes:
+      type: object
+      properties:
+        bankName:
+          type: string
+          example: 'HDFC'
+        bankSwiftCode:
+          type: string
+          example: 'HDFC000012'
+        bankSIFSCCode:
+          type: string
+          example: '121314144'
+        bankBranchCode:
+          type: string
+          example: 'HDFCIN0001'
+        additionalProperties:
+          type: string
+    AccountTransactionInfo:
+      type: object
+      properties:
+        transactionId:
+          type: string
+          example: '550e8400-e29b-41d4-a716-446655440000'
+        date:
+          type: string
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        paymentDetails:
+          type: object
+          properties:
+            amount:
+              type: number
+              example: 9001.85
+            operationType:
+              type: string
+              enum: ['CR', 'DB']
+            operationDetails:
+              oneOf:
+                - $ref: '#/components/schemas/CreditDetails'
+                - $ref: '#/components/schemas/DebitDetails'
+    AccountTransactionRequest:
+      type: object
+      properties:
+        mode:
+          oneOf:
+            - $ref: '#/components/schemas/CreditDetails'
+            - $ref: '#/components/schemas/DebitDetails'
+        amount:
+          type: number
+        description:
+          type: string
+    CreditDetails:
+      type: object
+      properties:
+        senderDetails:
+          type: object
+          properties:
+            bankName:
+              type: string
+              example: 'IDFC'
+            branchCode:
+              type: string
+              example: 'IDFC002324'
+    DebitDetails:
+      type: object
+      properties:
+        receiverDetails:
+          type: object
+          properties:
+            bankName:
+              type: string
+              example: 'IDFC'
+            branchCode:
+              type: string
+              example: 'IDFC002324'
+            purpose:
+              type: string
+              example: "Investment"
+    AuthorisationError:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          example: '2038-01-19 03:14:07 UTC'
+        status:
+          type: integer
+          example: 401
+        error:
+          type: string
+          example: Unauthorized
+        message:
+          type: string
+          example: Unauthorized access
+        path:
+          type: string
+          example: /backbase/api/v1/error
+    ApiErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: BB0600700
+        type:
+          type: string
+          example: External User input.Resource
+        message:
+          type: string
+          example: Unable to find resource with given parameters
+        help:
+          type: string
+          example: Reach out to slack channel '#backbase-support'
