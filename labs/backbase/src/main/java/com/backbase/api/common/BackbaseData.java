@@ -1,4 +1,4 @@
-package com.backbase.api.data;
+package com.backbase.api.common;
 
 public interface BackbaseData {
 }

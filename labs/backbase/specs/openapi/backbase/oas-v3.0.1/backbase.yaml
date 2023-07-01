@@ -344,7 +344,7 @@ components:
         branchDetails:
           type: object
           items:
-            '$ref': '#/components/schemas/AccountBrnachAttributes'
+            '$ref': '#/components/schemas/AccountBranchAttributes'
         additionalProperties:
           type: string
     AccountCreationRequest:
@@ -377,7 +377,7 @@ components:
         accountHolderMobile:
           type: string
           example: '+91-9986316924'
-    AccountBrnachAttributes:
+    AccountBranchAttributes:
       type: object
       properties:
         bankName:
