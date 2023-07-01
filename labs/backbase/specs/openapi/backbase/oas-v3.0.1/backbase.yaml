@@ -88,7 +88,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AccountUpdateRequest'
+              $ref: '#/components/schemas/AccountUpdateInput'
       responses:
         '200':
           description: OK
@@ -173,7 +173,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AccountCreationRequest'
+              $ref: '#/components/schemas/AccountCreationInput'
       responses:
         '201':
           description: Created
@@ -235,7 +235,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AccountTransactionInfo'
+                $ref: '#/components/schemas/TransactionInfoCollection'
         '400':
           description: Invalid Account Number
           content:
@@ -288,14 +288,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AccountTransactionRequest'
+              $ref: '#/components/schemas/TransactionInput'
       responses:
         '201':
           description: Created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AccountTransactionInfo'
+                $ref: '#/components/schemas/TransactionInfo'
         '400':
           description: Bad request
           content:
@@ -344,10 +344,10 @@ components:
         branchDetails:
           type: object
           items:
-            '$ref': '#/components/schemas/AccountBranchAttributes'
+            '$ref': '#/components/schemas/AccountBrnachAttributes'
         additionalProperties:
           type: string
-    AccountCreationRequest:
+    AccountCreationInput:
       type: object
       properties:
         accountHolderName:
@@ -365,7 +365,7 @@ components:
         branchCode:
           type: string
           example: 'HDFCIN000001'
-    AccountUpdateRequest:
+    AccountUpdateInput:
       type: object
       properties:
         dailyTransactionLimit:
@@ -377,7 +377,7 @@ components:
         accountHolderMobile:
           type: string
           example: '+91-9986316924'
-    AccountBranchAttributes:
+    AccountBrnachAttributes:
       type: object
       properties:
         bankName:
@@ -394,7 +394,7 @@ components:
           example: 'HDFCIN0001'
         additionalProperties:
           type: string
-    AccountTransactionInfo:
+    TransactionInfo:
       type: object
       properties:
         transactionId:
@@ -417,7 +417,11 @@ components:
               oneOf:
                 - $ref: '#/components/schemas/CreditDetails'
                 - $ref: '#/components/schemas/DebitDetails'
-    AccountTransactionRequest:
+    TransactionInfoCollection:
+      type: array
+      items:
+        $ref: '#/components/schemas/TransactionInfo'
+    TransactionInput:
       type: object
       properties:
         mode:
@@ -488,3 +492,4 @@ components:
         help:
           type: string
           example: Reach out to slack channel '#backbase-support'
+  

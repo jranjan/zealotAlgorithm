@@ -1,4 +1,4 @@
-package com.backbase.api.models;
+package com.backbase.api.controller.v1.response;
 
 import com.backbase.api.common.BackbaseData;
 import lombok.Getter;
@@ -8,5 +8,5 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BackbaseApiResponse implements BackbaseData {
+public class BackbaseApiOutput implements BackbaseData {
 }

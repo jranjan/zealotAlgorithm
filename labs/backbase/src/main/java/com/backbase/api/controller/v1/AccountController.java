@@ -1,40 +1,43 @@
 package com.backbase.api.controller.v1;
 
-import com.backbase.api.models.v1.version.account.Account;
-import lombok.extern.slf4j.Slf4j;
+import com.backbase.api.controller.v1.request.account.AccountCreationInput;
+import com.backbase.api.controller.v1.request.account.AccountUpdateInput;
+import com.backbase.api.controller.v1.response.account.AccountInfo;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Slf4j
+@Tag(name = "Account", description = "Manage account(s)")
 @RestController
 @RequestMapping("/accounts")
 public class AccountController {
 
     @RequestMapping(value="/{account}", method=RequestMethod.GET)
-    public Account getAccount(
+    public AccountInfo getAccount(
             @PathVariable("account") final String account) {
-        Account response = new Account();
+        AccountInfo response = new AccountInfo();
         return response;
     }
 
-    @RequestMapping(value="/{account_type}", method=RequestMethod.POST)
-    public Account createAccount(@PathVariable("account_type") final String account_type) {
-        Account response = new Account();
+    @RequestMapping(method=RequestMethod.POST)
+    public AccountInfo createAccount(@RequestBody AccountCreationInput accountCreationInput) {
+        AccountInfo response = new AccountInfo();
         return response;
     }
 
     @RequestMapping(value="/{account_number}", method=RequestMethod.PUT)
-    public Account updateAccount(
-            @PathVariable("account_number") final String account_number) {
-        Account response = new Account();
+    public AccountInfo updateAccount(
+            @RequestBody AccountUpdateInput accountUpdateInput) {
+        AccountInfo response = new AccountInfo();
         return response;
     }
     @RequestMapping(value="/{account_number}", method=RequestMethod.DELETE)
-    public Account deleteAccount(
+    public AccountInfo deleteAccount(
             @PathVariable("account_number") final String account_number) {
-        Account response = new Account();
+        AccountInfo response = new AccountInfo();
         return response;
     }
 }
