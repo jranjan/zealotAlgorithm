@@ -1,7 +1,7 @@
-package com.backbase.api.controlller.v1;
+package com.backbase.api.controller.v1;
 
 import com.backbase.api.common.BackbaseFrozenData;
-import com.backbase.api.controlller.v1.response.version.Version;
+import com.backbase.api.models.v1.version.Version;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

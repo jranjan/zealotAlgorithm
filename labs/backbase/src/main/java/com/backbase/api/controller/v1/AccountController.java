@@ -1,7 +1,6 @@
-package com.backbase.api.controlller.v1;
+package com.backbase.api.controller.v1;
 
-import com.backbase.api.controlller.v1.response.account.Account;
-import com.backbase.api.controlller.v1.response.version.Version;
+import com.backbase.api.models.v1.version.account.Account;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

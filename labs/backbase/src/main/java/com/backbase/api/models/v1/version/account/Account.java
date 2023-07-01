@@ -1,6 +1,6 @@
-package com.backbase.api.controlller.v1.response.account;
+package com.backbase.api.models.v1.version.account;
 
-import com.backbase.api.controlller.v1.response.BackbaseApiResponse;
+import com.backbase.api.models.BackbaseApiResponse;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
