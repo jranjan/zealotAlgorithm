@@ -1,5 +1,6 @@
 package com.backbase.api.controller.v1.request.transaction;
 
+import com.backbase.api.common.PaymentInfo;
 import com.backbase.api.controller.v1.request.BackbaseApiInput;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,4 +10,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class TransactionInput extends BackbaseApiInput {
+    private String remark;
+    private PaymentInfo paymentInfo;
 }

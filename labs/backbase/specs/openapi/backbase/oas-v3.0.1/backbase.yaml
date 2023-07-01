@@ -57,7 +57,7 @@ paths:
                 message: Invalid account number provided
                 help: Provide valid account number, or reach out to slack channel '#backbase-support'
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: '#/components/schemas/ApiResponseError'
         '401':
           description: Authorisation error
           content:
@@ -68,7 +68,7 @@ paths:
                 message: Authorisation failed
                 help: Verify you are authorisied to perform the operation
               schema:
-                $ref: '#/components/schemas/AuthorisationError'
+                $ref: '#/components/schemas/ApiResponseError'
     put:
       tags:
         - Accounts
@@ -106,7 +106,7 @@ paths:
                 message: Invalid account number provided
                 help: Provide valid account number, or reach out to slack channel '#backbase-support'
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: '#/components/schemas/ApiResponseError'
         '401':
           description: Authorisation error
           content:
@@ -117,7 +117,7 @@ paths:
                 message: Authorisation failed
                 help: Verify you are authorisied to perform the operation
               schema:
-                $ref: '#/components/schemas/AuthorisationError'
+                $ref: '#/components/schemas/ApiResponseError'
     delete:
       tags:
         - Accounts
@@ -149,7 +149,7 @@ paths:
                 message: Invalid account number provided
                 help: Provide valid account number, or reach out to slack channel '#backbase-support'
               schema:
-                $ref: '#/components/schemas/AuthorisationError'
+                $ref: '#/components/schemas/ApiResponseError'
         '401':
           description: Authorisation error
           content:
@@ -160,7 +160,7 @@ paths:
                 message: Authorisation failed
                 help: Verify you are authorisied to perform the operation
               schema:
-                $ref: '#/components/schemas/AuthorisationError'
+                $ref: '#/components/schemas/ApiResponseError'
   /accounts:
     post:
       tags:
@@ -191,7 +191,7 @@ paths:
                 message: Account creation criteria not met
                 help: Reach out to slack channel '#backbase-support'
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: '#/components/schemas/ApiResponseError'
         '401':
           description: Authorisation error
           content:
@@ -202,7 +202,7 @@ paths:
                 message: Authorisation failed
                 help: Verify you are authorisied to perform the operation
               schema:
-                $ref: '#/components/schemas/AuthorisationError'
+                $ref: '#/components/schemas/ApiResponseError'
         '409':
           description: Account already exists
           content:
@@ -213,7 +213,7 @@ paths:
                 message: Account already exists
                 help: Reach out to slack channel '#usd-support'
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: '#/components/schemas/ApiResponseError'
   /accounts/{account_number}/transactions:
     get:
       tags:
@@ -246,7 +246,7 @@ paths:
                 message: Invalid account number provided
                 help: Provide valid account number, or reach out to slack channel '#backbase-support'
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: '#/components/schemas/ApiResponseError'
         '401':
           description: Authorisation error
           content:
@@ -257,7 +257,7 @@ paths:
                 message: Authorisation failed
                 help: Verify you are authorisied to perform the operation
               schema:
-                $ref: '#/components/schemas/AuthorisationError'
+                $ref: '#/components/schemas/ApiResponseError'
         '404':
           description: No trsanction found
           content:
@@ -268,7 +268,7 @@ paths:
                 message: Unable to find resource with given parameters
                 help: Reach out to slack channel '#usd-support'
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: '#/components/schemas/ApiResponseError'
     post:
       tags:
         - AccountTransaction
@@ -306,7 +306,7 @@ paths:
                 message: Transaction criteria not met
                 help: Reach out to slack channel '#backbase-support'
               schema:
-                $ref: '#/components/schemas/ApiErrorResponse'
+                $ref: '#/components/schemas/ApiResponseError'
         '401':
           description: Authorisation error
           content:
@@ -317,7 +317,7 @@ paths:
                 message: Authorisation failed
                 help: Verify you are authorisied to perform the operation
               schema:
-                $ref: '#/components/schemas/AuthorisationError'
+                $ref: '#/components/schemas/ApiResponseError'
 components:
   schemas:
     AccountInfo:
@@ -344,7 +344,7 @@ components:
         branchDetails:
           type: object
           items:
-            '$ref': '#/components/schemas/AccountBrnachAttributes'
+            '$ref': '#/components/schemas/BranchInfo'
         additionalProperties:
           type: string
     AccountCreationInput:
@@ -377,7 +377,7 @@ components:
         accountHolderMobile:
           type: string
           example: '+91-9986316924'
-    AccountBrnachAttributes:
+    BranchInfo:
       type: object
       properties:
         bankName:
@@ -386,14 +386,12 @@ components:
         bankSwiftCode:
           type: string
           example: 'HDFC000012'
-        bankSIFSCCode:
+        bankIfscCode:
           type: string
           example: '121314144'
         bankBranchCode:
           type: string
           example: 'HDFCIN0001'
-        additionalProperties:
-          type: string
     TransactionInfo:
       type: object
       properties:
@@ -404,19 +402,21 @@ components:
           type: string
           format: date-time
           example: '2017-07-21T17:32:28Z'
-        paymentDetails:
-          type: object
-          properties:
-            amount:
-              type: number
-              example: 9001.85
-            operationType:
-              type: string
-              enum: ['CR', 'DB']
-            operationDetails:
-              oneOf:
-                - $ref: '#/components/schemas/CreditDetails'
-                - $ref: '#/components/schemas/DebitDetails'
+        paymentInfo:
+          '$ref': '#/components/schemas/PaymentInfo'
+    PaymentInfo:
+      type: object
+      properties:
+        amount:
+          type: number
+          example: 9001.85
+        paymentType:
+          type: string
+          enum: ['CR', 'DB']
+        paymentInfo:
+          oneOf:
+            - $ref: '#/components/schemas/CreditInfo'
+            - $ref: '#/components/schemas/DebitInfo'
     TransactionInfoCollection:
       type: array
       items:
@@ -424,15 +424,11 @@ components:
     TransactionInput:
       type: object
       properties:
-        mode:
-          oneOf:
-            - $ref: '#/components/schemas/CreditDetails'
-            - $ref: '#/components/schemas/DebitDetails'
-        amount:
-          type: number
-        description:
+        paymentInfo:
+          '$ref': '#/components/schemas/PaymentInfo'
+        remark:
           type: string
-    CreditDetails:
+    CreditInfo:
       type: object
       properties:
         senderDetails:
@@ -444,7 +440,7 @@ components:
             branchCode:
               type: string
               example: 'IDFC002324'
-    DebitDetails:
+    DebitInfo:
       type: object
       properties:
         receiverDetails:
@@ -459,25 +455,7 @@ components:
             purpose:
               type: string
               example: "Investment"
-    AuthorisationError:
-      type: object
-      properties:
-        timestamp:
-          type: string
-          example: '2038-01-19 03:14:07 UTC'
-        status:
-          type: integer
-          example: 401
-        error:
-          type: string
-          example: Unauthorized
-        message:
-          type: string
-          example: Unauthorized access
-        path:
-          type: string
-          example: /backbase/api/v1/error
-    ApiErrorResponse:
+    ApiResponseError:
       type: object
       properties:
         code:
@@ -485,11 +463,10 @@ components:
           example: BB0600700
         type:
           type: string
-          example: External User input.Resource
+          example: External User input
         message:
           type: string
           example: Unable to find resource with given parameters
         help:
           type: string
           example: Reach out to slack channel '#backbase-support'
-  
