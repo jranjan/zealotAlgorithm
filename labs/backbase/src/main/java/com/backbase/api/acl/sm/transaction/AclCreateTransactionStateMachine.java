@@ -50,7 +50,6 @@ public class AclCreateTransactionStateMachine extends AbstractStateMachine {
 
   public EnumExecutorEngineResult createTransactionState(StateMachineRequest request, Hint hint) {
     try {
-      System.out.println("EnumExecutorEngineResult createTransactionState(S");
       // Get request payload
       BackendCreateTransactionPayload requestPayload = (BackendCreateTransactionPayload) request.getRequestData();
       TransactionCreationInput userAccountInput = requestPayload.getTransactionInput();

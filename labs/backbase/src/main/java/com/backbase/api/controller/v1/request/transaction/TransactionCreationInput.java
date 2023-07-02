@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class TransactionCreationInput extends BackbaseApiInput {
     private String remark;
-    //private PaymentInfo paymentInfo;
+    private PaymentInfo paymentInfo;
 }
