@@ -38,7 +38,7 @@ paths:
           in: path
           required: true
           schema:
-            type: integer
+            type: String
             example: 52421344
       responses:
         '200':
@@ -81,7 +81,7 @@ paths:
           description: ID of the account to update
           required: true
           schema:
-            type: integer
+            type: String
             example: 52421344
       requestBody:
         required: true
@@ -130,7 +130,7 @@ paths:
           description: ID of the account to update
           required: true
           schema:
-            type: integer
+            type: String
             example: 52421344
       responses:
         '200':
@@ -227,7 +227,7 @@ paths:
           description: ID of the account to get transaction
           required: true
           schema:
-            type: integer
+            type: String
             example: 52421344
       responses:
         '200':
@@ -281,7 +281,7 @@ paths:
           description: ID of the account to create transaction
           required: true
           schema:
-            type: integer
+            type: String
             example: 52421344
       requestBody:
         required: true
@@ -324,7 +324,7 @@ components:
       type: object
       properties:
         accountNumber:
-          type: integer
+          type: String
           example: 52421344
         accountType:
           type: string
@@ -339,7 +339,7 @@ components:
           type: string
           example: '+91-9986316924'
         dailyTransactionLimit:
-          type: string
+          type: double
           example: 10000
         branchDetails:
           type: object
@@ -369,7 +369,7 @@ components:
       type: object
       properties:
         dailyTransactionLimit:
-          type: integer
+          type: double
           example: 10000
         accountHolderPrimaryEmail:
           type: string

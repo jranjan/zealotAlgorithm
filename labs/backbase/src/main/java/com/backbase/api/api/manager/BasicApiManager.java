@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 public final class BasicApiManager implements IApiManager {
 
   private final IAclManager aclManager;
-
   public BasicApiManager(IAclManager aclManager) {
     this.aclManager = aclManager;
   }

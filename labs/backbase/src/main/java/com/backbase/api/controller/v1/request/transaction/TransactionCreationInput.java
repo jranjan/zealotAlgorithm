@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class TransactionInput extends BackbaseApiInput {
+public class TransactionCreationInput extends BackbaseApiInput {
     private String remark;
-    private PaymentInfo paymentInfo;
+    //private PaymentInfo paymentInfo;
 }
