@@ -1,5 +1,5 @@
-# USD APIs OpenAPI Specifications
-* Defines specifications for various sets of the APIs required to realize USD business use cases.
+# Backbase APIs OpenAPI Specifications
+* Defines specifications for various sets of the APIs required to realize Backbase business use cases.
 * The specifications are defined as per the OpenAPI Specification(formerly known as Swagger Specification) overseen by the OpenAPI Initiative.
 * The specification can be used to generated API client stubs, models and other supporting classes.
 

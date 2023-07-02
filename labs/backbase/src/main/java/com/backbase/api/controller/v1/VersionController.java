@@ -1,6 +1,6 @@
 package com.backbase.api.controller.v1;
 
-import com.backbase.api.common.BackbaseFrozenData;
+import com.backbase.api.common.data.BackbaseGlobalData;
 import com.backbase.api.controller.v1.response.error.ApiResponseError;
 import com.backbase.api.controller.v1.response.version.VersionInfo;
 import io.swagger.v3.oas.annotations.Operation;
@@ -9,11 +9,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.GetMapping;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Version", description = "Provides supported API version")
+@Slf4j
 @RestController
 @RequestMapping(value = {"/", "/version"})
 public class VersionController {
@@ -29,7 +30,7 @@ public class VersionController {
     @RequestMapping(method= RequestMethod.GET)
     public VersionInfo getVersion() {
         VersionInfo response = new VersionInfo();
-        response.setVersion(BackbaseFrozenData.VERSION);
+        response.setVersion(BackbaseGlobalData.VERSION);
         return response;
     }
 }

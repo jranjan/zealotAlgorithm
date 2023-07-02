@@ -60,9 +60,9 @@ One
 
 # References
 
-| **Item**              | **Description**                                             |
-|:----------------------|:------------------------------------------------------------|
-| Design                | Provides deep-dive into design                              |
-| Message Code Strategy | Defines coding strategy used during log and error scenarios |
-| Metrics               | Provides metrics emitted by the system                      |
-| Alerts                | Providers alerts information                                |
+**Item** | **Description** 
+:--- | :---
+Design | Provides deep-dive into design
+Message Code Strategy | Defines coding strategy used during log and error scenarios
+Metrics | Provides metrics emitted by the system
+Alerts | Providers alerts information 
