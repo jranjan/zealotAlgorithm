@@ -211,7 +211,7 @@ paths:
                 code: BB0202700
                 type: External user input
                 message: Account already exists
-                help: Reach out to slack channel '#usd-support'
+                help: Reach out to slack channel '#backbase-support'
               schema:
                 $ref: '#/components/schemas/ApiResponseError'
   /accounts/{account_number}/transactions:
@@ -266,7 +266,7 @@ paths:
                 code: BB0300700
                 type:
                 message: Unable to find resource with given parameters
-                help: Reach out to slack channel '#usd-support'
+                help: Reach out to slack channel '#backbase-support'
               schema:
                 $ref: '#/components/schemas/ApiResponseError'
     post:
