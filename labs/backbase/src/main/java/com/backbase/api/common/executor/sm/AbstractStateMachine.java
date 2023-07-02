@@ -23,19 +23,10 @@ public abstract class AbstractStateMachine implements IStateMachine {
   public EnumExecutorEngineResult zerothState(StateMachineRequest request, Hint hint) {
     try {
       request.setStatus(BackendRequestStatus.REQUEST_INPROGRESS);
-      request.setNextState(this::collectDataState);
+      request.setNextState(this::successState);
     } catch (Exception e) {
       log.error("Exception occurred in collect data state", e);
       request.setNextState(this::errorState);
-    }
-    return EXECUTOR_RESULT_CONTINUE;
-  }
-
-  public EnumExecutorEngineResult collectDataState(StateMachineRequest request, Hint hint) {
-    try {
-      request.setNextState(this::finalState);
-    } catch (Exception e) {
-      log.error("Exception occurred in collect data state", e);
     }
     return EXECUTOR_RESULT_CONTINUE;
   }

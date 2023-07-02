@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class AccountUpdateInput extends BackbaseApiInput {
-    private String dailyTransactionLimit;
+    private double dailyTransactionLimit;
     private String accountHolderName;
     private String accountHolderPrimaryEmail;
     private String accountHolderMobile;

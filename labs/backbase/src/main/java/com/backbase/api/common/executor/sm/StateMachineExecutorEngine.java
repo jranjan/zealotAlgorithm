@@ -38,11 +38,10 @@ public class StateMachineExecutorEngine implements IExecutorEngine {
       stateMachineRequest.setPrevState(stateMachineRequest.getCurrState());
       stateMachineRequest.setCurrState(stateMachineRequest.getNextState());
       stateMachineRequest.setNextState(null);
-
       stateResult = stateMachineRequest.getCurrState().signature(stateMachineRequest, hint);
 
       /*
-       * 	Exercise specific activities if request is completed its processing.
+       *  Exercise specific activities if request is completed its processing.
        *  We are done with the processing of this request. So, let us do some
        *  sanity check and stay happy ever forever. In future, we might like
        *  to do more specialised processing.

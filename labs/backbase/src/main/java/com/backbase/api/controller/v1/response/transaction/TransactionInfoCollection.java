@@ -11,5 +11,6 @@ import java.util.ArrayList;
 @Setter
 @NoArgsConstructor
 public class TransactionInfoCollection extends BackbaseApiOutput {
+    private String accountNumber;
     private ArrayList<TransactionInfo> transactions = new ArrayList<>();
 }

@@ -9,5 +9,5 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class BackendAccountNumberPayload extends BackendData {
-  private int accountNumber;
+  private String accountNumber;
 }

@@ -10,11 +10,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class AccountInfo extends BackbaseApiOutput {
-    private int accountNumber;
+    private String accountNumber;
     private String accountType;
     private String accountHolderName;
     private String accountHolderPrimaryEmail;
     private String accountHolderMobile;
-    private String dailyTransactionLimit;
+    private double dailyTransactionLimit;
     private BranchInfo branchDetails;
 }

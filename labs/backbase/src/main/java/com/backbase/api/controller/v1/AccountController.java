@@ -18,6 +18,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +32,12 @@ import static com.backbase.api.acl.request.EnumAclRequestType.*;
 @RequestMapping("/accounts")
 public class AccountController {
 
-    private BasicApiManager apiManager;
+    private final BasicApiManager apiManager;
+
+    @Autowired
+    public AccountController(BasicApiManager apiManager) {
+        this.apiManager = apiManager;
+    }
 
     @Operation(summary = "Get account information")
     @ApiResponses({
@@ -50,13 +56,14 @@ public class AccountController {
     })
     @RequestMapping(value="/{account_number}", method=RequestMethod.GET)
     public AccountInfo getAccount(
-            @PathVariable("account_number") final int accountNumber) {
+            @PathVariable("account_number") final String accountNumber) {
         BackendAccountNumberPayload requestData = new BackendAccountNumberPayload();
         requestData.setAccountNumber(accountNumber);
         AclRequest aclRequest = new AclRequest(ACL_REQUEST_GET_ACCOUNT, requestData, apiManager, null);
         try {
             apiManager.getAclManager().process(aclRequest, null);
             BackendAccountPayload payload = (BackendAccountPayload) aclRequest.getResponseData();
+            System.out.println(payload.getAccountInfo().getAccountNumber() + " : " + payload.getAccountInfo().getAccountType());
             return payload.getAccountInfo();
         } catch (Exception e) {
             // TODO
@@ -117,8 +124,9 @@ public class AccountController {
     })
     @RequestMapping(value="/{account_number}", method=RequestMethod.PUT)
     public AccountInfo updateAccount(
-            @RequestBody AccountUpdateInput accountUpdateInput) {
+            @PathVariable("account_number") final String accountNumber, @RequestBody AccountUpdateInput accountUpdateInput) {
         BackendUpdateAccountPayload requestData = new BackendUpdateAccountPayload();
+        requestData.setAccountNumber(accountNumber);
         requestData.setAccountUpdateInput(accountUpdateInput);
         AclRequest aclRequest = new AclRequest(ACL_REQUEST_UPDATE_ACCOUNT, requestData, apiManager, null);
         try {
@@ -150,7 +158,7 @@ public class AccountController {
     })
     @RequestMapping(value="/{account_number}", method=RequestMethod.DELETE)
     public AccountInfo deleteAccount(
-            @PathVariable("account_number") final int accountNumber) {
+            @PathVariable("account_number") final String accountNumber) {
         BackendAccountNumberPayload requestData = new BackendAccountNumberPayload();
         requestData.setAccountNumber(accountNumber);
         AclRequest aclRequest = new AclRequest(ACL_REQUEST_DELETE_ACCOUNT, requestData, apiManager, null);

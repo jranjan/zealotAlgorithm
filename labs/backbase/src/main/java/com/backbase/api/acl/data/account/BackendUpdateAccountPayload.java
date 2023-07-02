@@ -9,5 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BackendUpdateAccountPayload extends BackendData {
+  private String accountNumber;
   private AccountUpdateInput accountUpdateInput;
 }
