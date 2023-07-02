@@ -75,7 +75,7 @@ public class TransactionController {
     @Operation(summary = "Create a transaction for the given account")
     @ApiResponses({
             @ApiResponse(responseCode = "201", content = {
-                    @Content(schema = @Schema(implementation = TransactionInfo.class), mediaType = "application/json")
+                    @Content(schema = @Schema(implementation = TransactionInfoCollection.class), mediaType = "application/json")
             }),
             @ApiResponse(responseCode = "401", content = {
                     @Content(schema = @Schema(implementation = ApiResponseError.class), mediaType = "application/json")
@@ -85,16 +85,16 @@ public class TransactionController {
             }),
     })
     @RequestMapping(value="/{account_number}/transactions", method=RequestMethod.POST)
-    public TransactionInfo createTransaction(@PathVariable("account_number") final String accountNumber,
+    public TransactionInfoCollection createTransaction(@PathVariable("account_number") final String accountNumber,
                                              @RequestBody TransactionCreationInput transactionInput) {
         BackendCreateTransactionPayload requestData = new BackendCreateTransactionPayload();
-        System.out.print("***************************");
+        requestData.setAccountNumber(accountNumber);
         requestData.setTransactionInput(transactionInput);
         AclRequest aclRequest = new AclRequest(ACL_REQUEST_CREATE_TRANSACTION, requestData, apiManager, null);
         try {
             apiManager.getAclManager().process(aclRequest, null);
             BackendTransactionPayload payload = (BackendTransactionPayload) aclRequest.getResponseData();
-            return payload.getTransactionInfoCollection().getTransactions().get(0);
+            return payload.getTransactionInfoCollection();
         } catch (Exception e) {
             // TODO
             // Prepare error message and send to caller. For now, we will log only.
