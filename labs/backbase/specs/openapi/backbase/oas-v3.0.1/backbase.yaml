@@ -38,7 +38,7 @@ paths:
           in: path
           required: true
           schema:
-            type: String
+            type: integer
             example: 52421344
       responses:
         '200':
@@ -81,7 +81,7 @@ paths:
           description: ID of the account to update
           required: true
           schema:
-            type: String
+            type: integer
             example: 52421344
       requestBody:
         required: true
@@ -130,7 +130,7 @@ paths:
           description: ID of the account to update
           required: true
           schema:
-            type: String
+            type: integer
             example: 52421344
       responses:
         '200':
@@ -211,7 +211,7 @@ paths:
                 code: BB0202700
                 type: External user input
                 message: Account already exists
-                help: Reach out to slack channel '#backbase-support'
+                help: Reach out to slack channel '#usd-support'
               schema:
                 $ref: '#/components/schemas/ApiResponseError'
   /accounts/{account_number}/transactions:
@@ -227,7 +227,7 @@ paths:
           description: ID of the account to get transaction
           required: true
           schema:
-            type: String
+            type: integer
             example: 52421344
       responses:
         '200':
@@ -266,7 +266,7 @@ paths:
                 code: BB0300700
                 type:
                 message: Unable to find resource with given parameters
-                help: Reach out to slack channel '#backbase-support'
+                help: Reach out to slack channel '#usd-support'
               schema:
                 $ref: '#/components/schemas/ApiResponseError'
     post:
@@ -281,14 +281,14 @@ paths:
           description: ID of the account to create transaction
           required: true
           schema:
-            type: String
+            type: integer
             example: 52421344
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TransactionInput'
+              $ref: '#/components/schemas/TransactionCreateInput'
       responses:
         '201':
           description: Created
@@ -324,7 +324,7 @@ components:
       type: object
       properties:
         accountNumber:
-          type: String
+          type: string
           example: 52421344
         accountType:
           type: string
@@ -339,7 +339,7 @@ components:
           type: string
           example: '+91-9986316924'
         dailyTransactionLimit:
-          type: double
+          type: string
           example: 10000
         branchDetails:
           type: object
@@ -369,7 +369,7 @@ components:
       type: object
       properties:
         dailyTransactionLimit:
-          type: double
+          type: integer
           example: 10000
         accountHolderPrimaryEmail:
           type: string
@@ -418,10 +418,16 @@ components:
             - $ref: '#/components/schemas/CreditInfo'
             - $ref: '#/components/schemas/DebitInfo'
     TransactionInfoCollection:
-      type: array
-      items:
-        $ref: '#/components/schemas/TransactionInfo'
-    TransactionInput:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+          example: 52421344
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionInfo'
+    TransactionCreateInput:
       type: object
       properties:
         paymentInfo:
@@ -470,3 +476,4 @@ components:
         help:
           type: string
           example: Reach out to slack channel '#backbase-support'
+  
