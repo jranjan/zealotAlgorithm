@@ -23,7 +23,7 @@ part of process of following this style:
 
 ### Bounded Context
 
-![Backbase API Bounded Context](/documents/design/images/bounded_context.png)
+![Backbase API Bounded Context](./images/bounded_context.png)
 
 
 
