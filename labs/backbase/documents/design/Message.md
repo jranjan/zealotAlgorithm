@@ -28,7 +28,7 @@ This document plays a guiding role in how we engineer our services to be more us
 
 # Application logging
 
-A log is a file that records the communications between a system and its users that records the type, content, and time of transactions made by a person from a system terminal. This section talks about best practices for logs to be emitted by USD services. Exception hierarchy and Log
+A log is a file that records the communications between a system and its users that records the type, content, and time of transactions made by a person from a system terminal. This section talks about best practices for logs to be emitted by services. Exception hierarchy and Log
 message might seem related, but not so. It seems too primarily related because we print log statements once we get an exception. But the correlation stops there! Exception hierarchy is meant to raise an error when one can not handle the message. So, its usage is only for error
 scenarios. Yeah, a purist might say this is not 100 per cent true. For now, we will not discuss the purist aspect. However, a Log message is about emitting messages in a standardised format with proper codes. Also, it is even used to report Info, Warn or Error messages. See message universe
 below:
