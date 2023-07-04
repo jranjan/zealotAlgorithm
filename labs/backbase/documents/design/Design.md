@@ -23,7 +23,7 @@ part of process of following this style:
 
 ### Bounded Context
 
-![RESTful Resource Graph](/design/images/bounded_context.png)
+![RESTful Resource Graph](/documents/design/images/bounded_context.png)
 
 
 
