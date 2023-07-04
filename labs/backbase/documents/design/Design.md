@@ -1,5 +1,15 @@
 # Overview
 
+This document talks about architecture and design aspect of Backbase API System.
+It touch the following points:
+
+1. Which architecture style is chosen?
+2. Functional architecture
+3. Low Level Design
+4. Low Level Design Future Consideration 
+
+Also, the reader is requested to read this document in association with [Message Strategy](./Message.md), which greatly influence how we do logging and report error to customer under specific circumstance.
+
 # Architectural Style
 Any product can be designed with any architectural style. Also, every architectural style choice has its pros and cons. Also, any architectural style can be challenged at any time with certain points as no architectural style is sufficient to serve all cons. Otherwise, the entire development
 generation might have picked that.  E.g.

@@ -1,6 +1,6 @@
 # Overview
 
-**P**ublic **A**PI is a representation of Universal Service Directory and a single source of truth for external interaction. Its code name is **Kshitij**. It is critical to achieving high service availability and measuring different parameters during its lifecycle for better observability and analytics. Primarily, any of the service metrics is one of the below types.
+It is critical to achieving high service availability and measuring different parameters during its lifecycle for better observability and analytics. Primarily, any of the service metrics is one of the below types.
 
 1. **Counter**, denotes an integer value, which is the total number of times a method or some code snippet in interest is processed
 2. **Timer**, denotes a real number, which is the latency for a method call or time taken for some code snippet to process
@@ -12,12 +12,12 @@ This section enlists all supported metric(s), along with a details description o
 
 # Supported metric(s)
 
-Different metrics are meant to serve some telemetry aspects of service. The service `Kshitij` supports the following category metrics.
+Different metrics are meant to serve some telemetry aspects of service. The service supports the following category metrics.
 
-1. **Request**, tells about the rate at which Kshitij processes API calls.
-2. **Error Rate**, tells about failed requests, i.e. those which could not be processed by Kshitij successfully.
-3. **Availability**, tells the overall availability of service Kshitij.
-4. **Delay**, tells about latency to process a given request as processed by service Kshitij.
+1. **Request**, tells about the rate at which service processes API calls.
+2. **Error Rate**, tells about failed requests, i.e. those which could not be processed by service successfully.
+3. **Availability**, tells the overall availability of service service.
+4. **Delay**, tells about latency to process a given request as processed by service service.
 5. **Saturation**, tells about the saturation level of various types of resources used during their lifecycle at different loads.
 
 **Request**
