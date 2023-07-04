@@ -54,15 +54,11 @@ As of today, three resources are supported: Version, Account and Transaction. Ea
 
 The swagger specification can be found [here](http://localhost:8080/backbase/v1/swagger-ui/index.html)
 
-# Usage
-
-One
-
 # References
 
-**Item** | **Description** 
-:--- | :---
-Design | Provides deep-dive into design
-Message Code Strategy | Defines coding strategy used during log and error scenarios
-Metrics | Provides metrics emitted by the system
-Alerts | Providers alerts information 
+| **Item**                                              | **Description**                                             |
+|:------------------------------------------------------|:------------------------------------------------------------|
+| [Design](./documents/design/Design.md)                | Provides deep-dive into design                              |
+| [Message Code Strategy](./documents/design/Design.md) | Defines coding strategy used during log and error scenarios |
+| [Metrics](./documents/operations/Metric.md)           | Provides metrics emitted by the system                      |
+| [Alerts](./documents/operations/Alert.md)             | Providers alerts information                                |
