@@ -23,7 +23,7 @@ part of process of following this style:
 
 ### Bounded Context
 
-![RESTful Resource Graph](/documents/design/images/bounded_context.png)
+![Backbase API Bounded Context](/documents/design/images/bounded_context.png)
 
 
 
@@ -44,7 +44,7 @@ ask. And, creating a constant interface for the aspect ever changing is a really
 If not done thoughtfully, API consumption patterns is going to get affected, and hence monetising 
 its value. The goal is to adhere to 3 steps approach depicted below.
 
-![RESTful Resource Engineering Process](/design/images/restful_resource_modelling_process.png)
+![RESTful Resource Engineering Process](/documents/design/images/restful_resource_modelling_process.png)
 
 The advantages of choosing this process are the following:
 
