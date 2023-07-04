@@ -16,14 +16,14 @@ For our product, we choose DDD because its a close ally for cloud native applica
 micro-services pattern. Keeping this style, this section defines some of artefacts resulting as 
 part of process of following this style:
 
-- [Bounded Context](!bounded-context)
+- [Bounded Context](#bounded-context)
 - [Domain Elements](!)
 - [Domain Element Relationship](!)
 - [Domain Model](!)
 
 ### Bounded Context
 
-[RESTful Resource Graph](!bounded_context.png)
+![RESTful Resource Graph](/images/bounded_context.png)
 
 
 
@@ -42,9 +42,9 @@ business logic is imminent. At the same time, it is very important to provide st
 and agile API which does not require consumers to adopt to new version very frequently is a critical 
 ask. And, creating a constant interface for the aspect ever changing is a really changing tasks. 
 If not done thoughtfully, API consumption patterns is going to get affected, and hence monetising 
-its value. The goal is to adhere to 3 step approach depicted below.
+its value. The goal is to adhere to 3 steps approach depicted below.
 
-[RESTful Resource Engineering Process](!/images/restful_resource_modelling_process.png)
+![RESTful Resource Engineering Process](/images/restful_resource_modelling_process.png)
 
 The advantages of choosing this process are the following:
 
@@ -57,6 +57,6 @@ The advantages of choosing this process are the following:
 
 Keeping this philosophy in mind, the following resource model graph is identified.
 
-[RESTful Resource Graph](!restful_resource_graph.png)
+![RESTful Resource Graph](/images/restful_resource_graph.png)
 
 TODO: PUT A TABLE DESCRIBING RESOURCE 
