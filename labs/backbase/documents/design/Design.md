@@ -95,7 +95,13 @@ TODO: PUT A TABLE DESCRIBING RESOURCE
 # Low Level Design 
 
 ### Sequence Diagram 
+
+![Use case flow](./images/lld_usecase_flow.png)
+
 ### Class Diagram
+
+![Class diagram](./images/lld_class_diagram.png)
+
 ### Error Reporting
 
 # Low Level Design Future Consideration 
