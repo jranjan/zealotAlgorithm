@@ -13,7 +13,7 @@ The content in this section is intended for multiple audiences like developers, 
    - Get functional overview of the system by looking at [swagger specification](./specs/openapi/backbase/oas-v3.0.1/backbase.yaml)
    - [Metric]((./documents/operations/Metric.md)) and [Alerts](./documents/operations/Alert.md)
    - [Message code](./documents/design/Message.md)
-4. **Product Manager, Product Owner and Scrum Masters*
+4. **Product Manager, Product Owner and Scrum Masters**
    - See [roadmap](./documents/design/Roadmap.md)
 
 
