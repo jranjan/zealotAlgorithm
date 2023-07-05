@@ -5,7 +5,7 @@ and plays a significant role in quick turnaround in the remediation of system is
 lists a set of alert(s) supported by xInterceptor, its interpretation and its remediation plan.
 
 Metric(s) and alerts go hand to hand. The reader is expected to have a basic understanding of
-metrics and alert eco-system supported in Salesforce, functional knowledge of service 
+metrics and alert eco-system supported, functional knowledge of service 
 and metrics supported by it.
 
 # Supported alert(s)
