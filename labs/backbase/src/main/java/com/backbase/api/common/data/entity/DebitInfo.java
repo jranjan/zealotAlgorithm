@@ -9,6 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DebitInfo extends PaymentTypeInfo {
     private String bankName;
+    private String accountNumber;
     private String branchCode;
     private String purpose;
 }
