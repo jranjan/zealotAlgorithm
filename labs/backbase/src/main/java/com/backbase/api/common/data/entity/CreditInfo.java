@@ -10,4 +10,5 @@ import lombok.Setter;
 public class CreditInfo extends PaymentTypeInfo {
     private String bankName;
     private String branchCode;
+    private String accountNumber;
 }

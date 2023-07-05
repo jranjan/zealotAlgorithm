@@ -96,11 +96,29 @@ TODO: PUT A TABLE DESCRIBING RESOURCE
 
 ### Sequence Diagram 
 
-![Use case flow](./images/lld_usecase_flow.png)
+The below diagram tells how system behaves when it comes up.
+
+![Application start behavior](./images/lld_sequence_diagram_application_start.png)
+
+The below diagram tells how a system will behave end-to-end for specific RESTful request. Note that only few 
+use case are shown to keep messaging simple.
+
+![Use case flow](./images/lld_sequence_diagram_business_flow.png)
 
 ### Class Diagram
 
-![Class diagram](./images/lld_class_diagram.png)
+The below diagram tells about the entity classes (core classes) managing business data.
+
+![Business entities](./images/lld_class_diagram_business_entity.png)
+
+The below diagram tells about system data, which is container of business data and others required to process transaction.
+
+![System entities](./images/lld_class_diagram_system_data.png)
+
+The below diagram talks about system components (including controller) wires up to realise functional behavior of system.
+
+![System components](./images/lld_class_diagram_system.png)
+
 
 ### Error Reporting
 

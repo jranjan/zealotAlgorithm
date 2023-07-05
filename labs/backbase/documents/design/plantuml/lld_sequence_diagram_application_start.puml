@@ -1,0 +1,33 @@
+@startuml
+
+actor Admin
+participant "Spring Boot Application" as Application
+participant "Tomcat Server" as Tomcat
+participant "API Manager" as BasicApiManager
+participant "ACL Manager" as BasicAclManager
+participant "Account REST Controller" as AccountController
+participant "Transaction REST Controller" as TransactionController
+
+
+Admin -> Application: Start the application
+group Create Controller
+Application -> BasicApiManager: Create
+Application -> BasicAclManager: Create
+Application -> AccountController: Create and initialise (with reference to BasicApiManager)
+Application -> TransactionController: Create and initialise (with reference to BasicApiManager)
+end group
+
+|||
+
+group Start tomcat server
+Application -> Tomcat: starts with tomcat server
+Tomcat -> Tomcat: Starts serice at port 8080
+end group
+
+|||
+
+group Load swagger
+Application -> Application: Load swagger specification
+end group
+
+@enduml

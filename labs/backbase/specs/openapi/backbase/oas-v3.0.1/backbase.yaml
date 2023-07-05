@@ -437,30 +437,30 @@ components:
     CreditInfo:
       type: object
       properties:
-        senderDetails:
-          type: object
-          properties:
-            bankName:
-              type: string
-              example: 'IDFC'
-            branchCode:
-              type: string
-              example: 'IDFC002324'
+        accountNumber:
+          type: string
+          example: 23242525
+        bankName:
+          type: string
+          example: 'IDFC'
+        branchCode:
+          type: string
+          example: 'IDFC002324'
     DebitInfo:
       type: object
       properties:
-        receiverDetails:
-          type: object
-          properties:
-            bankName:
-              type: string
-              example: 'IDFC'
-            branchCode:
-              type: string
-              example: 'IDFC002324'
-            purpose:
-              type: string
-              example: "Investment"
+        accountNumber:
+          type: string
+          example: 23242525
+        bankName:
+          type: string
+          example: 'IDFC'
+        branchCode:
+          type: string
+          example: 'IDFC002324'
+        purpose:
+          type: string
+          example: "Investment"
     ApiResponseError:
       type: object
       properties:

@@ -1,0 +1,50 @@
+@startuml
+
+RestController <|-- AccountController
+RestController <|-- TransactionController
+
+AccountController --> IApiManager
+TransactionController --> IApiManager
+
+IManager <|-- IApiManager
+IApiManager <-- BasicApiManager
+
+
+interface IStateMachineRegistry {
+  + void registerStateMachine(IRequestType requestType, IStateMachine stateMachine);
+  + int getCount();
+  + IStateMachine getStateMachine(IRequestType type);
+}
+
+
+class BasicAclManager  {
+  - final IStateMachineRegistry stateMachineRegistry;
+  - final IExecutorEngine executorEngine;
+}
+
+BasicAclManager --> IStateMachineRegistry
+BasicAclManager --> IExecutorEngine
+
+
+IManager <|-- IAclManager
+IAclManager <-- BasicAclManager
+
+
+interface IStateMachine {
+  EnumExecutorEngineResult zerothState(StateMachineRequest request, Hint hint);
+  EnumExecutorEngineResult successState(StateMachineRequest request, Hint hint);
+  EnumExecutorEngineResult finalState(StateMachineRequest request, Hint hint);
+}
+
+IStateMachine <|-- AbstractStateMachine
+
+AbstractStateMachine <|-- AclCreateAccountStateMachine
+AbstractStateMachine <|-- AclUpdateAccountStateMachine
+AbstractStateMachine <|-- AclGetAccountStateMachine
+AbstractStateMachine <|-- AclDeleteAccountStateMachine
+
+AbstractStateMachine <|-- AclCreateTransactionStateMachine
+AbstractStateMachine <|-- AclGetTransactionStateMachine
+
+
+@enduml
