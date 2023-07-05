@@ -1,6 +1,22 @@
 # Preface
+The document is the root page of the Backbase API micro-service and is intended for the consumer of the service. It does not deep dive into architecture or design but provides references to the same if someone is looking for details. The reader is expected to have a basic understanding of REST architecture, Swagger specification and Backbase product.
 
-The document is root page of backbase API micro-service and is intended for consumer of service. It does not deep dive into architecture or design but provides a references to the same, if someone is looking for details. The reader is expected to have basic understanding of REST architecture, Swagger specification and Backbase product.
+The content in this section is intended for multiple audiences like developers, Architects, Customers or DevOps. So, it is important to pick a specific section instead of getting lost in so much information. Here are a few points which might be of help to different audiences.
+
+1. **Consumer of API**. you might like to focus on [swagger specification](./specs/openapi/backbase/oas-v3.0.1/backbase.yaml)
+2. **Architect, Developer and DevOps Engineer**, you might like to read the following:
+   - [Code](./src)
+   - [Design document](./documents/design/Design.md)
+   - [Message code strategy](./documents/design/Message.md)
+   - [Metric]((./documents/operations/Metric.md)) and [Alerts](./documents/operations/Alert.md)
+3. **DevOps Engineer**
+   - Get functional overview of the system by looking at [swagger specification](./specs/openapi/backbase/oas-v3.0.1/backbase.yaml)
+   - [Metric]((./documents/operations/Metric.md)) and [Alerts](./documents/operations/Alert.md)
+   - [Message code](./documents/design/Message.md)
+4. **Product Manager, Product Owner and Scrum Masters*
+   - See [roadmap](./documents/design/Roadmap.md)
+
+
 
 # Overview
 
@@ -56,9 +72,10 @@ The swagger specification can be found [here](http://localhost:8080/backbase/v1/
 
 # References
 
-| **Item**                                              | **Description**                                             |
-|:------------------------------------------------------|:------------------------------------------------------------|
-| [Design](./documents/design/Design.md)                | Provides deep-dive into design                              |
-| [Message Code Strategy](./documents/design/Design.md) | Defines coding strategy used during log and error scenarios |
-| [Metrics](./documents/operations/Metric.md)           | Provides metrics emitted by the system                      |
-| [Alerts](./documents/operations/Alert.md)             | Providers alerts information                                |
+| **Item**                                              | **Description**                                                                           |
+|:------------------------------------------------------|:------------------------------------------------------------------------------------------|
+| [Design](./documents/design/Design.md)                | Provides deep-dive into design                                                            |
+| [Message Code Strategy](./documents/design/Design.md) | Defines coding strategy used during log and error scenarios                               |
+| [Metrics](./documents/operations/Metric.md)           | Provides metrics emitted by the system                                                    |
+| [Alerts](./documents/operations/Alert.md)             | Providers alerts information                                                              |
+| [Roadmap](./documents/design/Roadmap.md)              | Tells potential enahcment area, should be considered after consultation with stakeholders |
