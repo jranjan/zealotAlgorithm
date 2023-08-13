@@ -6,7 +6,6 @@ public class Subset {
     public static List<List<Integer>> findSubsets(int[] nums) {
         List<List<Integer>> subsets = new ArrayList<List<Integer>>();
         subsets.add(Collections.emptyList());
-        System.out.println(subsets.size());
         for(int i=0; i<nums.length; i++){
             int fixedSize = subsets.size();
             for(int j=0; j<fixedSize; j++) {
@@ -18,4 +17,6 @@ public class Subset {
         }
         return subsets;
     }
+
+
 }

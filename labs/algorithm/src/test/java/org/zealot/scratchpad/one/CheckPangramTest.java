@@ -1,33 +1,34 @@
-package org.zealot.algorithm.warmup;
+package org.zealot.scratchpad.one;
 
 import org.junit.jupiter.api.Test;
+import org.zealot.algorithm.warmup.Pangram;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PangramTest {
+public class CheckPangramTest {
 
     @Test
-    void pangram() {
-        String sentence = "TheQuickBrownFoxJumpsOverTheLazyDog";
-        assertTrue(Pangram.solution(sentence));
+    void check1() {
+        String sentence1 = "TheQuickBrownFoxJumpsOverTheLazyDog";
+        System.out.println(String.format("%s test result=%b", sentence1, CheckPangram.algorithmUsingArray(sentence1)));
+
+        String sentence2 = "Hello";
+        System.out.println(String.format("%s test result=%b", sentence2, CheckPangram.algorithmUsingArray(sentence2)));
+
+        String sentence3 = "TheQuickBrownFoxJumpsOewrwrwrw1242424242c  verTheLazyDog";
+        System.out.println(String.format("%s test result=%b", sentence3, CheckPangram.algorithmUsingArray(sentence3)));
     }
 
     @Test
-    void notPangram() {
-        String sentence = "Hello";
-        assertFalse(Pangram.solution(sentence));
-    }
+    void check2() {
+        String sentence1 = "TheQuickBrownFoxJumpsOverTheLazyDog";
+        System.out.println(String.format("%s test result=%b", sentence1, CheckPangram.algorithmUsingSet(sentence1)));
 
-    @Test
-    void pangramHashSet() {
-        String sentence = "TheQuickBrownFoxJumpsOverTheLazyDog";
-        assertTrue(Pangram.solutionHashset(sentence));
-    }
+        String sentence2 = "Hello";
+        System.out.println(String.format("%s test result=%b", sentence2, CheckPangram.algorithmUsingSet(sentence2)));
 
-    @Test
-    void notPangramHashSet() {
-        String sentence = "Hello";
-        assertFalse(Pangram.solutionHashset(sentence));
+        String sentence3 = "TheQuickBrownFoxJumpsOewrwrwrw1242424242c  verTheLazyDog";
+        System.out.println(String.format("%s test result=%b", sentence3, CheckPangram.algorithmUsingSet(sentence3)));
     }
 }

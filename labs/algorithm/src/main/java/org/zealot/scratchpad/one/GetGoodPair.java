@@ -2,26 +2,27 @@ package org.zealot.scratchpad.one;
 
 import java.util.*;
 
+/******************************************************************************************************
+ * Analysis Syntax =  Readiness | Popularity | Code Knowledge | Analysis Knowledge | Strategy
+ * Analysis = RUN | HIGH | EXCELLENT | EXCELLENT | REVISIT
+ *****************************************************************************************************/
 public class GetGoodPair {
     public int find(int[] nums) {
-        Map<Integer, PairInfo> map = new HashMap<>();
+        int total = 0;
+        Map<Integer, Integer> map = new LinkedHashMap<>();
+
         for(int i = 0; i < nums.length; i++) {
             if (map.containsKey(nums[i])) {
-                PairInfo pairInfo = map.get(nums[i]);
-                pairInfo.peers.add(i);
+                map.put(nums[i], map.get(nums[i]) + 1);
             } else {
-                PairInfo pairInfo = new PairInfo();
-                pairInfo.pos = i;
-                map.put(nums[i], pairInfo);
+                map.put(nums[i], 1);
             }
         }
 
-        int total = 0;
         for(Integer k : map.keySet()) {
-            PairInfo pairInfo = map.get(k);
-            total = total + pairInfo.peers.size();
+            Integer n = map.get(k) * (map.get(k) - 1) / 2;
+            total = total + n;
         }
-
         return total;
     }
 

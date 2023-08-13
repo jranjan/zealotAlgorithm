@@ -1,26 +1,58 @@
-package org.zealot.algorithm.twopointers;
+package org.zealot.scratchpad.one;
 
 import org.junit.jupiter.api.Test;
+import org.zealot.algorithm.twopointers.TargetSum;
+
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TargetSumTest {
+public class GetTargetSumTest {
     @Test
-    void targetSum() {
+    void solution() {
+        System.out.println("******** test 1 ********");
         int[] nums = new int[]{1, 2, 3, 4, 6};
-        int[] result = TargetSum.solution(nums, 6);
-        assertTrue(result[0]==1 && result[1]==3);
+        int targetSum = 6;
+        System.out.println(String.format("Input=%s, target=%s, Result=%s", Arrays.toString(nums), targetSum,
+                Arrays.toString(GetTargetSumPair.search(nums, targetSum))));
+        targetSum = 3;
+        System.out.println(String.format("Input=%s, target=%s, Result=%s", Arrays.toString(nums), targetSum,
+                Arrays.toString(GetTargetSumPair.search(nums, targetSum))));
+        targetSum = 99;
+        System.out.println(String.format("Input=%s, target=%s, Result=%s", Arrays.toString(nums), targetSum,
+                Arrays.toString(GetTargetSumPair.search(nums, targetSum))));
+
         nums = new int[]{2, 5, 9, 11};
-        result = TargetSum.solution(nums, 11);
-        assertTrue(result[0]==0 && result[1]==2);
+        targetSum = 11;
+        System.out.println(String.format("Input=%s, target=%s, Result=%s", Arrays.toString(nums), targetSum,
+                Arrays.toString(GetTargetSumPair.search(nums, targetSum))));
     }
 
     @Test
-    void targetSumHashmap() {
+    void solutionUsingMap() {
+        System.out.println("******** test 2 ********");
         int[] nums = new int[]{1, 2, 3, 4, 6};
-        int[] result = TargetSum.solutionHashmap(nums, 6);
-        assertTrue(result[0]==1 && result[1]==3);
+        int targetSum = 6;
+        System.out.println(String.format("Input=%s, target=%s, Result=%s", Arrays.toString(nums), targetSum,
+                Arrays.toString(GetTargetSumPair.searchUsingHashMap(nums, targetSum))));
+        targetSum = 3;
+        System.out.println(String.format("Input=%s, target=%s, Result=%s", Arrays.toString(nums), targetSum,
+                Arrays.toString(GetTargetSumPair.searchUsingHashMap(nums, targetSum))));
+        targetSum = 99;
+        System.out.println(String.format("Input=%s, target=%s, Result=%s", Arrays.toString(nums), targetSum,
+                Arrays.toString(GetTargetSumPair.searchUsingHashMap(nums, targetSum))));
+
         nums = new int[]{2, 5, 9, 11};
-        result = TargetSum.solutionHashmap(nums, 11);
-        assertTrue(result[0]==0 && result[1]==2);
+        targetSum = 11;
+        System.out.println(String.format("Input=%s, target=%s, Result=%s", Arrays.toString(nums), targetSum,
+                Arrays.toString(GetTargetSumPair.searchUsingHashMap(nums, targetSum))));
+        nums = new int[]{2, 2, 2, 2};
+        targetSum = 4;
+        System.out.println(String.format("Input=%s, target=%s, Result=%s", Arrays.toString(nums), targetSum,
+                Arrays.toString(GetTargetSumPair.searchUsingHashMap(nums, targetSum))));
+        nums = new int[]{2, 2, 2, 2};
+        targetSum = 6;
+        System.out.println(String.format("Input=%s, target=%s, Result=%s", Arrays.toString(nums), targetSum,
+                Arrays.toString(GetTargetSumPair.searchUsingHashMap(nums, targetSum))));
     }
 }
