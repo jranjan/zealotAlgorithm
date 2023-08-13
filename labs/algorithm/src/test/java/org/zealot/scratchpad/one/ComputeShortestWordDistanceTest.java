@@ -1,29 +1,25 @@
-package org.zealot.algorithm.warmup;
+package org.zealot.scratchpad.one;
 
 import org.junit.jupiter.api.Test;
+import org.zealot.algorithm.warmup.WordDistance;
+
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class WordDistanceTest {
+public class ComputeShortestWordDistanceTest {
     @Test
     void checkDistance() {
-        String[] wordSet1 = new String[]{"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
-        assertTrue(WordDistance.solution(wordSet1, "fox", "dog") == 5);
-        assertTrue(WordDistance.solution(wordSet1, "fox", "fox") == 0);
-        String[] wordSet2 = new String[]{"a", "c", "d", "b", "a"};
-        assertTrue(WordDistance.solution(wordSet2, "a", "b") == 1);
-        String[] wordSet3 = new String[]{"a", "c", "b", "d", "b", "a"};
-        assertTrue(WordDistance.solutionBirdirectionalPointer(wordSet3, "a", "b") == 1);
-    }
+        String[] words = new String[]{"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
+        String word1 = "fox", word2 = "dog";
+        System.out.println(("Word set=%s, word1=%s, word2=%s, shortest " +
+                "distance = %d").formatted(Arrays.toString(words), word1, word2,
+                ComputeShortestWordDistance.compute(words, word1, word2)));
 
-    @Test
-    void checkDistanceBirdirectionalPointer() {
-        String[] wordSet1 = new String[]{"the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"};
-        assertTrue(WordDistance.solutionBirdirectionalPointer(wordSet1, "fox", "dog") == 5);
-        assertTrue(WordDistance.solutionBirdirectionalPointer(wordSet1, "fox", "fox") == 0);
-        String[] wordSet2 = new String[]{"a", "c", "d", "b", "a"};
-        assertTrue(WordDistance.solutionBirdirectionalPointer(wordSet2, "a", "b") == 1);
-        String[] wordSet3 = new String[]{"a", "c", "b", "d", "b", "a"};
-        assertTrue(WordDistance.solutionBirdirectionalPointer(wordSet3, "a", "b") == 1);
+        words = new String[]{"a", "c", "d", "b", "a"};
+        word1 = "a"; word2 = "b";
+        System.out.println(("Word set=%s, word1=%s, word2=%s, shortest " +
+                "distance = %d").formatted(Arrays.toString(words), word1, word2,
+                ComputeShortestWordDistance.compute(words, word1, word2)));
     }
 }

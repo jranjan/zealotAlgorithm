@@ -1,44 +1,28 @@
-package org.zealot.algorithm.warmup;
+package org.zealot.scratchpad.one;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ReverseVowelsTest {
 
     @Test
-    void reverseVowlesStringOnly() {
-        String s = ReverseVowels.solution("AEIOU");
-        assertTrue(s.equals("UOIEA"));
+    void reverse1() {
+        System.out.println("****** test count = 1");
+        String s = "AEIOU";
+        System.out.println(String.format("%s after algorithm is [%s]", s, GetVowelsReversed.algorithmLinearLoop(s)));
+        s = "1U2O3I4E5A6";
+        System.out.println(String.format("%s after algorithm is [%s]", s, GetVowelsReversed.algorithmLinearLoop(s)));
+        s = "12131sfsfsfsf";
+        System.out.println(String.format("%s after algorithm is [%s]", s, GetVowelsReversed.algorithmLinearLoop(s)));
     }
 
     @Test
-    void reverseMixedString() {
-        String s = ReverseVowels.solution("1A2E3I4O5U6");
-        assertTrue(s.equals("1U2O3I4E5A6"));
-    }
-
-    @Test
-    void reverseZeroVowelString() {
-        String s = ReverseVowels.solution("12131sfsfsfsf");
-        assertTrue(s.equals("12131sfsfsfsf"));
-    }
-
-    @Test
-    void reverseVowlesStringOnlyBidirectionalMethod() {
-        String s = ReverseVowels.solution("AEIOU");
-        assertTrue(s.equals("UOIEA"));
-    }
-
-    @Test
-    void reverseMixedStringBidirectionalMethod() {
-        String s = ReverseVowels.solution("1A2E3I4O5U6");
-        assertTrue(s.equals("1U2O3I4E5A6"));
-    }
-
-    @Test
-    void reverseZeroVowelStringBidirectionalMethod() {
-        String s = ReverseVowels.solution("12131sfsfsfsf");
-        assertTrue(s.equals("12131sfsfsfsf"));
+    void reverse2() {
+        System.out.println("****** test count = 2");
+        String s = "AEIOU";
+        System.out.println(String.format("%s after algorithm is [%s]", s, GetVowelsReversed.algorithmUsingBidirectionalPointers(s)));
+        s = "1U2O3I4E5A6";
+        System.out.println(String.format("%s after algorithm is [%s]", s, GetVowelsReversed.algorithmUsingBidirectionalPointers(s)));
+        s = "12131sfsfsfsf";
+        System.out.println(String.format("%s after algorithm is [%s]", s, GetVowelsReversed.algorithmUsingBidirectionalPointers(s)));
     }
 }

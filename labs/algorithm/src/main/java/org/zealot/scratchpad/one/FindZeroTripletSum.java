@@ -1,35 +1,44 @@
 package org.zealot.scratchpad.one;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class FindTripletSum {
+/******************************************************************************************************
+ * Analysis Syntax =  Readiness | Popularity | Code Knowledge | Analysis Knowledge | Strategy
+ * Analysis = CRAWL | HIGH | EXCELLENT | UGLY | MEMORISE
+ *****************************************************************************************************/
+public class FindZeroTripletSum {
     public static List<List<Integer>> tripletSearch(int[] arr) {
-        List<List<Integer>> triplets = new ArrayList<>();
+        Set<List<Integer>> tripletsSet = new HashSet<>();
+        for (int i = 0; i < arr.length; i++) {
+            Set<List<Integer>> s = findTripletList(arr, i);
+            tripletsSet.addAll(s);
+        }
 
+        List<List<Integer>> triplets = new ArrayList<>();
+        triplets.addAll(tripletsSet);
         return triplets;
     }
 
-    public static List<Integer> findTargetSum(int[] arr, int targetPos) {
+    public static Set<List<Integer>> findTripletList(int[] arr, int targetPos) {
         if ((targetPos < 0) || (targetPos >= arr.length)) return null;
 
-        int targetSum = arr[targetPos];
-        List<Integer> targetNumbersList = new ArrayList<>();
         Map<Integer, Integer> map = new HashMap();
+        Set<List<Integer>> triplets = new HashSet<>();
         for (int i = 0; i < arr.length; i++) {
             if (i == targetPos) continue;
-
-            int searchKey =  ;
+            int searchKey = - arr[targetPos] - arr[i];
             if (map.containsKey(searchKey)) {
-                // Compliment is there, it means tht sum is going to be zero.
-                targetNumbersList.add(arr[i]);
+                List<Integer> l = new ArrayList<>();
+                l.add(arr[targetPos]);
+                l.add(arr[i]);
+                l.add(searchKey);
+                Collections.sort(l);
+                triplets.add(l);
             } else {
                 map.put(arr[i], i);
             }
         }
 
-        return targetNumbersList;
+        return triplets;
     }
 }

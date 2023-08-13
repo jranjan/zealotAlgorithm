@@ -1,14 +1,21 @@
 package org.zealot.scratchpad.one;
 
-public class CheckPalidrome {
-    public static boolean verify(String s) {
-        s = s.replaceAll("[^a-zA-Z0-9]", "");
-        s = s.toLowerCase().trim();
-        for(int i = 0, j = s.length() - 1;  i < j; i++, j--) {
-            if (s.charAt(i) != s.charAt(j)) {
-                return false;
-            }
-        }
-        return true;
+import org.junit.jupiter.api.Test;
+import org.zealot.algorithm.warmup.Palidrome;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class CheckPalidromeTest {
+    @Test
+    void verify() {
+        String s = "A man, a plan, a canal, Panama!";
+        System.out.println(String.format("[%s] result = [%b]", s, CheckPalidrome.verify(s)));
+        s = "Was $$ it ## a car or a @@ cat I saw?";
+        System.out.println(String.format("[%s] result = [%b]", s, CheckPalidrome.verify(s)));
+        s = "A man, a plan,a canal, Panama!";
+        System.out.println(String.format("[%s] result = [%b]", s, CheckPalidrome.verify(s)));
+        s = "1211314141 abccba";
+        System.out.println(String.format("[%s] result = [%b]", s, CheckPalidrome.verify(s)));
     }
 }

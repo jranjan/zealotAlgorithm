@@ -1,21 +1,35 @@
-package org.zealot.algorithm.twopointers;
+package org.zealot.scratchpad.one;
 
 import org.junit.jupiter.api.Test;
+import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RemoveDuplicatesTest {
     @Test
-    void containsDuplicates() {
+    void solution() {
+        System.out.println("****** test count = 1");
         int[] num = new int[]{2, 3, 3, 3, 6, 9, 9};
-        assertTrue(RemoveDuplicates.solution(num) == 4);
+        System.out.println(String.format("Input=%s, Output=%s", Arrays.toString(num),
+                RemoveDuplicates.erase(num)));
         num = new int[]{2, 2, 2, 11};
-        assertTrue(RemoveDuplicates.solution(num) == 2);
+        System.out.println(String.format("Input=%s, Output=%s", Arrays.toString(num),
+                RemoveDuplicates.erase(num)));
+        num = new int[]{2, 3, 4, 5, 6, 9, 0};
+        System.out.println(String.format("Input=%s, Output=%s", Arrays.toString(num),
+                RemoveDuplicates.erase(num)));
     }
 
     @Test
-    void containsZeroDuplicates() {
-        int[] num = new int[]{2, 3, 4, 5, 6, 9, 0};
-        assertTrue(RemoveDuplicates.solution(num) == 7);
+    void solutionUsingSet() {
+        System.out.println("****** test count = 2");
+        int[] num = new int[]{2, 3, 3, 3, 6, 9, 9};
+        System.out.println(String.format("Input=%s, Output=%s", Arrays.toString(num),
+                RemoveDuplicates.removeUsingSet(num)));
+        num = new int[]{2, 2, 2, 11};
+        System.out.println(String.format("Input=%s, Output=%s", Arrays.toString(num),
+                RemoveDuplicates.removeUsingSet(num)));
+        num = new int[]{2, 3, 4, 5, 6, 9, 0};
+        System.out.println(String.format("Input=%s, Output=%s", Arrays.toString(num),
+                RemoveDuplicates.removeUsingSet(num)));
     }
 }
